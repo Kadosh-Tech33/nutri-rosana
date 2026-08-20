@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rosana Morais · Nutricionista — Comida de verdade, sem firula</title>
+<meta name="description" content="Acompanhamento nutricional prático com comida de verdade. Emagreça e recupere sua saúde sem dieta restritiva nem mercado caro." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+<style>
+/* ─── TOKENS ─────────────────────────────────────── */
+:root{
+  --paper:      #FAF7F1;
+  --cream:      #F1EADD;
+  --cream-2:    #E7DECD;
+  --border:     #E2D8C6;
+  --espresso:   #211A12;
+  --espresso-d: #16100A;
+  --espresso-m: #33291D;
+  --gold:       #C29A46;
+  --gold-lt:    #E4CE9A;
+  --gold-deep:  #A07B31;
+  --text:       #2A241C;
+  --text-sub:   #5E564A;
+  --text-mute:  #94897A;
+  --white:      #FFFFFF;
+  --r:          14px;
+  --r-pill:     60px;
+  --sh-sm:      0 2px 14px rgba(60,45,20,.06);
+  --sh-md:      0 8px 34px rgba(60,45,20,.10);
+  --sh-lg:      0 18px 60px rgba(60,45,20,.14);
+  --ease:       .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── RESET ───────────────────────────────────────── */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-tap-highlight-color:transparent; }
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+section[id]{ scroll-margin-top:76px; }
+
+/* ─── UTIL ────────────────────────────────────────── */
+.container{ width:min(100%,560px); margin-inline:auto; padding-inline:26px; }
+.section{ padding-block:76px; }
+.eyebrow{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; }
+.rule{ display:block; width:56px; height:1px; margin:18px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.center{ text-align:center; }
+
+[data-reveal]{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+[data-reveal].visible{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  [data-reveal]{ opacity:1 !important; transform:none !important; transition:none; }
+  .avatar-wrap::before,.scroll-hint{ animation:none !important; }
+}
+
+/* ═══ NAVBAR ═══ */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:60;
+  transition:background var(--ease), box-shadow var(--ease), border-color var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav-inner{
+  width:min(100%,860px); margin-inline:auto; padding:14px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-brand{ display:flex; align-items:center; gap:10px; }
+.nav-mark{
+  width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
+  background:linear-gradient(140deg,var(--gold),var(--gold-lt));
+  color:var(--espresso); font-family:'Cormorant Garamond',serif; font-weight:600; font-size:19px;
+}
+.nav-name{ font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:#fff; letter-spacing:.02em; line-height:1; }
+.nav-role{ font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); }
+.nav-links{ display:none; align-items:center; gap:26px; }
+.nav-links a{ font-size:13px; color:rgba(255,255,255,.82); letter-spacing:.02em; transition:color var(--ease); }
+.nav-links a:hover{ color:#fff; }
+.nav-cta{
+  display:inline-flex; align-items:center; gap:7px;
+  background:linear-gradient(140deg,var(--gold),var(--gold-lt)); color:var(--espresso);
+  font-size:12.5px; font-weight:500; padding:9px 16px; border-radius:var(--r-pill);
+  transition:transform var(--ease), box-shadow var(--ease);
+}
+.nav-cta:hover{ transform:translateY(-2px); box-shadow:0 8px 22px rgba(194,154,70,.4); }
+.nav-cta svg{ width:15px; height:15px; }
+.nav-burger{ display:inline-flex; background:none; border:none; color:#fff; cursor:pointer; padding:6px; }
+
+.nav.scrolled{ background:var(--paper); box-shadow:var(--sh-sm); border-color:var(--border); }
+.nav.scrolled .nav-name{ color:var(--text); }
+.nav.scrolled .nav-role{ color:var(--gold-deep); }
+.nav.scrolled .nav-links a{ color:var(--text-sub); }
+.nav.scrolled .nav-links a:hover{ color:var(--text); }
+.nav.scrolled .nav-burger{ color:var(--text); }
+
+.mobile-menu{
+  position:fixed; inset:0; z-index:61; background:rgba(22,16,10,.97);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  opacity:0; visibility:hidden; transition:opacity var(--ease), visibility var(--ease);
+}
+.mobile-menu.open{ opacity:1; visibility:visible; }
+.mobile-menu a{ font-family:'Cormorant Garamond',serif; font-size:26px; color:#fff; padding:10px; }
+.mobile-menu a.mm-cta{ margin-top:18px; font-family:'DM Sans'; font-size:14px; background:linear-gradient(140deg,var(--gold),var(--gold-lt)); color:var(--espresso); padding:14px 30px; border-radius:var(--r-pill); }
+.mm-close{ position:absolute; top:20px; right:22px; background:none; border:none; color:#fff; cursor:pointer; padding:6px; }
+
+/* ═══ HERO ═══ */
+.hero{
+  position:relative; min-height:100svh; display:flex; align-items:center; justify-content:center;
+  text-align:center; overflow:hidden; background:var(--espresso-d);
+}
+.hero-bg{
+  position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 8%, rgba(194,154,70,.14), transparent 60%),
+    linear-gradient(180deg,#251C12,#16100A 70%);
+}
+.hero-bg::after{
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(228,206,154,.05) 1px, transparent 1px);
+  background-size:22px 22px; opacity:.5;
+}
+.hero-content{ position:relative; z-index:3; width:min(100%,560px); padding:96px 26px 104px; display:flex; flex-direction:column; align-items:center; }
+
+.studio-label{ display:inline-flex; align-items:center; gap:8px; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:34px; opacity:.9; }
+.studio-label .dot{ width:4px; height:4px; background:var(--gold-lt); border-radius:50%; opacity:.7; }
+
+.avatar-wrap{ position:relative; width:146px; height:146px; margin:0 auto 26px; }
+.avatar-wrap::before{
+  content:''; position:absolute; inset:-5px; border-radius:50%;
+  background:conic-gradient(transparent 0deg,var(--gold) 60deg,var(--gold-lt) 120deg,transparent 180deg,var(--gold) 240deg,var(--gold-lt) 300deg,transparent 360deg);
+  animation:spin 11s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.avatar-wrap::after{ content:''; position:absolute; inset:-2px; border-radius:50%; background:var(--espresso-d); }
+.avatar-wrap img{ position:relative; z-index:1; width:100%; height:100%; border-radius:50%; object-fit:cover; object-position:top center; }
+
+.hero-name{ font-family:'Cormorant Garamond',serif; font-size:clamp(28px,7vw,36px); font-weight:500; color:#fff; letter-spacing:.03em; line-height:1.15; }
+.hero-role{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); font-weight:300; opacity:.85; margin-top:6px; margin-bottom:22px; }
+.hero-rule{ display:block; width:64px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-lt),transparent); margin:0 auto 26px; opacity:.6; }
+.hero-headline{
+  font-family:'Playfair Display',serif; font-size:clamp(23px,6.2vw,31px); font-weight:400; font-style:italic;
+  line-height:1.42; max-width:400px; margin:0 auto;
+  background:linear-gradient(160deg,var(--gold-lt) 0%,#fff 42%,var(--gold) 100%);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hero-sub{ font-size:14.5px; color:rgba(255,255,255,.62); max-width:400px; margin:22px auto 0; line-height:1.7; }
+.hero-btn{ margin-top:34px; }
+
+.btn-gold{
+  display:inline-flex; align-items:center; gap:10px;
+  background:linear-gradient(140deg,var(--gold),var(--gold-lt)); color:var(--espresso);
+  font-family:'DM Sans'; font-size:15px; font-weight:500; padding:16px 34px; border-radius:var(--r-pill);
+  box-shadow:0 10px 30px rgba(194,154,70,.28); transition:transform var(--ease), box-shadow var(--ease); cursor:pointer; border:none;
+}
+.btn-gold:hover{ transform:translateY(-3px); box-shadow:0 16px 40px rgba(194,154,70,.4); }
+.btn-gold:active{ transform:scale(.98); }
+.btn-gold svg{ width:19px; height:19px; }
+.hero-micro{ font-size:12px; color:rgba(255,255,255,.45); margin-top:16px; letter-spacing:.02em; }
+
+.scroll-hint{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:3; display:flex; flex-direction:column; align-items:center; gap:5px; opacity:.35; animation:float 2.5s ease-in-out infinite; pointer-events:none; }
+@keyframes float{ 0%,100%{ transform:translateX(-50%) translateY(0);} 50%{ transform:translateX(-50%) translateY(6px);} }
+.scroll-hint span{ font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-lt); }
+.scroll-hint svg{ width:15px; height:15px; stroke:var(--gold-lt); }
+
+/* ═══ SEÇÃO GENÉRICA ═══ */
+.section-label{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; }
+.section-title{ font-family:'Cormorant Garamond',serif; font-size:clamp(27px,6.6vw,35px); font-weight:600; color:var(--espresso); line-height:1.2; margin-top:8px; }
+.section-intro{ font-size:15px; color:var(--text-sub); line-height:1.75; margin-top:14px; }
+
+/* ═══ DORES ═══ */
+.pains{ background:var(--cream); text-align:center; }
+.pains-grid{ display:grid; gap:14px; margin-top:38px; text-align:left; }
+.pain-card{
+  background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:24px 22px;
+  display:flex; gap:16px; align-items:flex-start; box-shadow:var(--sh-sm);
+  transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+.pain-card:hover{ transform:translateY(-3px); box-shadow:var(--sh-md); border-color:var(--gold-lt); }
+.pain-ico{ flex-shrink:0; width:46px; height:46px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,#F3ECDD,var(--cream)); color:var(--gold-deep); }
+.pain-ico svg{ width:23px; height:23px; }
+.pain-name{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; color:var(--espresso); line-height:1.2; }
+.pain-desc{ font-size:13.5px; color:var(--text-sub); margin-top:5px; line-height:1.6; }
+
+/* ═══ MÉTODO ═══ */
+.method{ background:var(--paper); }
+.method-list{ margin-top:40px; display:grid; gap:30px; }
+.method-item{ display:flex; gap:20px; align-items:flex-start; }
+.method-num{ flex-shrink:0; font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:600; color:var(--gold); line-height:1; width:44px; }
+.method-item h3{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; color:var(--espresso); }
+.method-item p{ font-size:14px; color:var(--text-sub); margin-top:5px; line-height:1.65; }
+
+/* ═══ DEPOIMENTOS ═══ */
+.testimonials{ background:var(--cream); text-align:center; }
+.testi-wrap{ position:relative; margin-top:38px; overflow:hidden; }
+.testi-track{ display:flex; gap:16px; transition:transform .45s cubic-bezier(.4,0,.2,1); will-change:transform; }
+.testi-card{ flex:0 0 100%; max-width:100%; background:var(--white); border-radius:var(--r); border-left:3px solid var(--gold); padding:28px 24px 24px; text-align:left; box-shadow:var(--sh-sm); }
+.testi-mark{ font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--gold-lt); line-height:.5; margin-bottom:12px; }
+.testi-text{ font-family:'Playfair Display',serif; font-size:15px; font-style:italic; color:var(--text-sub); line-height:1.7; }
+.testi-stars{ color:var(--gold); font-size:13px; letter-spacing:2px; margin-top:16px; }
+.testi-author{ font-size:11.5px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--espresso-m); margin-top:6px; }
+.testi-dots{ display:flex; justify-content:center; gap:8px; margin-top:22px; }
+.testi-dot{ width:7px; height:7px; border-radius:50%; background:var(--cream-2); border:none; cursor:pointer; padding:0; transition:background var(--ease), transform var(--ease); }
+.testi-dot.active{ background:var(--gold); transform:scale(1.3); }
+.testi-nav{ display:flex; justify-content:center; gap:12px; margin-top:16px; }
+.testi-btn{ width:38px; height:38px; border-radius:50%; border:1.5px solid var(--border); background:var(--white); color:var(--text-mute); display:grid; place-items:center; cursor:pointer; box-shadow:var(--sh-sm); transition:border-color var(--ease), color var(--ease), transform var(--ease); }
+.testi-btn:hover{ border-color:var(--gold); color:var(--gold-deep); transform:scale(1.08); }
+.testi-btn svg{ width:16px; height:16px; }
+.testi-note{ font-size:11.5px; color:var(--text-mute); margin-top:20px; }
+
+/* ═══ SOBRE ═══ */
+.about{ background:var(--paper); text-align:center; }
+.about-photo{ width:100%; max-width:290px; margin:38px auto 0; border-radius:var(--r); overflow:hidden; box-shadow:var(--sh-md); position:relative; }
+.about-photo img{ width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top center; }
+.about-photo::after{ content:''; position:absolute; bottom:16px; right:16px; width:32px; height:32px; border-bottom:2px solid var(--gold); border-right:2px solid var(--gold); border-radius:0 0 4px 0; }
+.about-body{ font-size:15px; color:var(--text-sub); line-height:1.78; margin-top:22px; }
+.about-body p+p{ margin-top:14px; }
+.about-ig{ display:inline-block; margin-top:22px; color:var(--gold-deep); font-weight:500; letter-spacing:.02em; border-bottom:1px solid var(--gold-lt); padding-bottom:2px; }
+
+/* ═══ PASSO A PASSO ═══ */
+.steps{ background:var(--cream); text-align:center; }
+.steps-grid{ margin-top:40px; display:grid; gap:14px; text-align:left; }
+.step-card{ background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:22px 24px; display:flex; gap:18px; align-items:center; box-shadow:var(--sh-sm); }
+.step-n{ flex-shrink:0; width:42px; height:42px; border-radius:50%; border:1.5px solid var(--gold-lt); display:grid; place-items:center; font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--gold-deep); }
+.step-card h3{ font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--espresso); line-height:1.2; }
+.step-card p{ font-size:13px; color:var(--text-sub); margin-top:3px; line-height:1.55; }
+
+/* ═══ FAQ ═══ */
+.faq{ background:var(--paper); }
+.faq-list{ margin-top:36px; border-top:1px solid var(--border); }
+.faq-item{ border-bottom:1px solid var(--border); }
+.faq-q{ width:100%; background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; text-align:left; padding:20px 4px; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--espresso); }
+.faq-icon{ flex-shrink:0; color:var(--gold); font-size:24px; line-height:1; transition:transform var(--ease); }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.faq-a p{ padding:0 4px 22px; font-size:14px; color:var(--text-sub); line-height:1.7; }
+
+/* ═══ CTA ═══ */
+.cta{ background:var(--espresso); text-align:center; position:relative; overflow:hidden; }
+.cta::before{ content:''; position:absolute; top:-80px; right:-80px; width:280px; height:280px; background:radial-gradient(circle,rgba(194,154,70,.2),transparent 70%); }
+.cta::after{ content:''; position:absolute; bottom:-60px; left:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(228,206,154,.14),transparent 70%); }
+.cta .container{ position:relative; z-index:1; }
+.cta-eyebrow{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); font-weight:500; }
+.cta-title{ font-family:'Cormorant Garamond',serif; font-size:clamp(28px,7.4vw,38px); font-weight:400; color:#fff; line-height:1.28; margin-top:12px; }
+.cta-title em{ font-style:italic; color:var(--gold-lt); }
+.cta-sub{ font-size:14px; color:rgba(255,255,255,.6); margin-top:14px; }
+.cta .btn-gold{ margin-top:30px; }
+.cta-micro{ font-size:12px; color:rgba(255,255,255,.45); margin-top:14px; }
+
+/* ═══ SOCIAL ═══ */
+.social{ background:var(--paper); text-align:center; padding-block:52px; }
+.social-label{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; }
+.social-links{ display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-top:20px; }
+.social-link{ display:inline-flex; align-items:center; gap:9px; font-size:13.5px; color:var(--text-sub); border:1px solid var(--border); background:var(--white); border-radius:var(--r-pill); padding:10px 18px; transition:border-color var(--ease), color var(--ease), transform var(--ease); }
+.social-link:hover{ border-color:var(--gold); color:var(--espresso); transform:translateY(-2px); }
+.social-ico{ width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,var(--gold),var(--gold-lt)); display:grid; place-items:center; }
+.social-ico svg{ width:15px; height:15px; fill:var(--white); }
+
+/* ═══ FOOTER ═══ */
+footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
+.footer-logo{ font-family:'Cormorant Garamond',serif; font-size:24px; color:#fff; letter-spacing:.03em; }
+.footer-logo span{ color:var(--gold-lt); font-style:italic; }
+.footer-divider{ width:40px; height:1px; background:var(--gold); opacity:.5; margin:14px auto; }
+.footer-info{ font-size:12.5px; color:rgba(255,255,255,.55); line-height:1.8; }
+.footer-copy{ display:block; font-size:11px; color:rgba(255,255,255,.35); margin-top:16px; letter-spacing:.02em; }
+
+/* ═══ DESKTOP ═══ */
+@media (min-width:768px){
+  .nav-links{ display:flex; }
+  .nav-burger{ display:none; }
+  .pains-grid{ grid-template-columns:1fr 1fr; }
+  .steps-grid{ grid-template-columns:1fr 1fr; }
+  .method-list{ grid-template-columns:1fr 1fr; gap:36px 40px; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#topo" class="nav-brand">
+      <span class="nav-mark">R</span>
+      <span><span class="nav-name">Rosana Morais</span><br><span class="nav-role">Nutricionista</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#metodo">Método</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#" class="js-wa nav-cta">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        Agendar
+      </a>
+    </nav>
+    <button class="nav-burger" id="burger" aria-label="Abrir menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mm-close" id="mmClose" aria-label="Fechar menu">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a href="#sobre">Sobre</a>
+  <a href="#metodo">Método</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#faq">FAQ</a>
+  <a href="#" class="js-wa mm-cta">Agendar via WhatsApp</a>
+</div>
+
+<section class="hero" id="topo">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="studio-label" data-reveal><span class="dot"></span> Comida de verdade · sem firula <span class="dot"></span></span>
+
+    <div class="avatar-wrap" data-reveal>
+      <img src="img/foto (2).png" alt="Nutricionista Rosana Morais" />
+    </div>
+
+    <h1 class="hero-name" data-reveal>Rosana Morais</h1>
+    <p class="hero-role" data-reveal>Nutricionista</p>
+    <span class="hero-rule" data-reveal></span>
+    <p class="hero-headline" data-reveal>Emagreça com comida de verdade — sem dieta maluca nem mercado caro.</p>
+    <p class="hero-sub" data-reveal>Acompanhamento nutricional prático e individualizado, adaptado ao que você já come. Do jeito realista que se sustenta.</p>
+
+    <div class="hero-btn" data-reveal>
+      <a href="#" class="js-wa btn-gold">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        Agendar consulta via WhatsApp
+      </a>
+      <p class="hero-micro">Resposta rápida · Online e presencial</p>
+    </div>
+  </div>
+
+  <div class="scroll-hint"><span>Explore</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<section class="section pains">
+  <div class="container">
+    <p class="section-label" data-reveal>Se você se identifica com isso…</p>
+    <h2 class="section-title" data-reveal>Você não precisa de mais uma dieta.</h2>
+    <span class="rule" data-reveal></span>
+
+    <div class="pains-grid">
+      <div class="pain-card" data-reveal>
+        <span class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 019-9 9 9 0 018 5"/><path d="M21 12a9 9 0 01-9 9 9 9 0 01-8-5"/><path d="M17 8h4V4"/><path d="M7 16H3v4"/></svg></span>
+        <div><p class="pain-name">Efeito sanfona</p><p class="pain-desc">Cansada de emagrecer e engordar tudo de novo com dieta que ninguém aguenta manter.</p></div>
+      </div>
+      <div class="pain-card" data-reveal>
+        <span class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg></span>
+        <div><p class="pain-name">Peso e estufamento</p><p class="pain-desc">Aquela sensação de inchaço e cansaço no fim do dia que já virou rotina.</p></div>
+      </div>
+      <div class="pain-card" data-reveal>
+        <span class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6"/></svg></span>
+        <div><p class="pain-name">Mercado caro</p><p class="pain-desc">Medo de gastar rios de dinheiro em ingrediente difícil de achar e caro.</p></div>
+      </div>
+      <div class="pain-card" data-reveal>
+        <span class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v7a3 3 0 003 3v8M7 3v6M10 3v6M18 3c-1.5 0-2 2-2 5s.5 4 2 4v9"/></svg></span>
+        <div><p class="pain-name">Passar fome</p><p class="pain-desc">Dificuldade de mudar hábitos sem viver com fome ou largar a vida social.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section method" id="metodo">
+  <div class="container center">
+    <p class="section-label" data-reveal>O método</p>
+    <h2 class="section-title" data-reveal>Nutrição Sem Firula</h2>
+    <span class="rule" data-reveal></span>
+    <p class="section-intro" data-reveal>O básico que funciona, com as quantidades certas. Nada de invencionice, nada de milagre — só comida de verdade adaptada à sua rotina.</p>
+  </div>
+  <div class="container">
+    <div class="method-list">
+      <div class="method-item" data-reveal><span class="method-num">01</span><div><h3>Plano realista</h3><p>Feito em cima do que você já come. Sem cardápio impossível de seguir.</p></div></div>
+      <div class="method-item" data-reveal><span class="method-num">02</span><div><h3>Comida de verdade</h3><p>Carnes, ovos e alimentos acessíveis, com a ingestão certa de proteína e nutrientes.</p></div></div>
+      <div class="method-item" data-reveal><span class="method-num">03</span><div><h3>Economia no mercado</h3><p>Você compra só o que precisa. Muita gente acaba gastando menos, não mais.</p></div></div>
+      <div class="method-item" data-reveal><span class="method-num">04</span><div><h3>Sem passar fome</h3><p>Sem cortar tudo de uma vez e sem abrir mão da vida social. Mudança que dura.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section testimonials" id="depoimentos">
+  <div class="container">
+    <p class="section-label" data-reveal>Quem já vive isso</p>
+    <h2 class="section-title" data-reveal>Palavras de quem seguiu</h2>
+    <span class="rule" data-reveal></span>
+
+    <div class="testi-wrap" data-reveal>
+      <div class="testi-track" id="testiTrack">
+        <article class="testi-card">
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Achei o plano da Rô muito bom! É muito realista e de acordo com o que já como. Não tem firula, é o básico que funciona com as quantidades certas. Não vou gastar mais no mercado, até posso gastar menos, porque é comprar o que precisa. Gostei muito mesmo!</p>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-author">Paciente · acompanhamento online</p>
+        </article>
+        <article class="testi-card">
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Foi muito tranquilo, não passei fome nem nada! Tirei o refrigerante — hoje tentei tomar um copo de Coca, mas ficou muito doce, tomei só um pouquinho. Sexta e sábado já estou sem lanche e sem refri. No máximo zero açúcar.</p>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-author">Paciente · acompanhamento online</p>
+        </article>
+        <article class="testi-card">
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Bom dia! Estou amando minha dieta, já estou me sentindo mais leve, sem estufamento no fim do dia. Estou seguindo direitinho.</p>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-author">Paciente · acompanhamento online</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="testi-dots">
+      <button class="testi-dot active" data-idx="0" aria-label="Depoimento 1"></button>
+      <button class="testi-dot" data-idx="1" aria-label="Depoimento 2"></button>
+      <button class="testi-dot" data-idx="2" aria-label="Depoimento 3"></button>
+    </div>
+    <div class="testi-nav">
+      <button class="testi-btn" id="testiPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="testi-btn" id="testiNext" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+    <p class="testi-note">Depoimentos reais, compartilhados com autorização. Resultados variam de pessoa para pessoa.</p>
+  </div>
+</section>
+
+<section class="section about" id="sobre">
+  <div class="container">
+    <p class="section-label" data-reveal>Quem é a Rosana</p>
+    <h2 class="section-title" data-reveal>Despertar as pessoas para o que elas não conseguem ver.</h2>
+    <span class="rule" data-reveal></span>
+
+    <div class="about-photo" data-reveal>
+      <img src="img/foto (1).png" alt="Rosana Morais no consultório" />
+    </div>
+
+    <div class="about-body" data-reveal>
+      <p>Rosana Morais é nutricionista e trabalha com um jeito direto e acolhedor de cuidar da alimentação: sem dieta mirabolante, sem produto caro, sem prometer milagre.</p>
+      <p>A proposta é te dar clareza sobre o que realmente importa e um plano que cabe na sua vida — com atenção individual e acompanhamento de verdade até você conquistar o resultado.</p>
+    </div>
+    <a href="https://instagram.com/nutri.rosanamorais" target="_blank" rel="noopener" class="about-ig" data-reveal>@nutri.rosanamorais</a>
+  </div>
+</section>
+
+<section class="section steps">
+  <div class="container center">
+    <p class="section-label" data-reveal>Como funciona</p>
+    <h2 class="section-title" data-reveal>Do primeiro &ldquo;oi&rdquo; ao seu plano</h2>
+    <span class="rule" data-reveal></span>
+  </div>
+  <div class="container">
+    <div class="steps-grid">
+      <div class="step-card" data-reveal><span class="step-n">1</span><div><h3>Agende pelo WhatsApp</h3><p>Um clique e você fala direto com a gente.</p></div></div>
+      <div class="step-card" data-reveal><span class="step-n">2</span><div><h3>Avaliação completa</h3><p>Analisamos sua rotina, preferências e objetivos.</p></div></div>
+      <div class="step-card" data-reveal><span class="step-n">3</span><div><h3>Plano individualizado</h3><p>Prático e feito pra sua realidade.</p></div></div>
+      <div class="step-card" data-reveal><span class="step-n">4</span><div><h3>Acompanhamento</h3><p>Suporte pra dúvidas e ajustes no caminho.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="container center">
+    <p class="section-label" data-reveal>Dúvidas</p>
+    <h2 class="section-title" data-reveal>Perguntas frequentes</h2>
+    <span class="rule" data-reveal></span>
+  </div>
+  <div class="container">
+    <div class="faq-list" data-reveal>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">O atendimento é presencial ou online?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Os dois. Você pode ser atendida presencialmente ou 100% online por vídeo — do jeito que for melhor pra você.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Como recebo o plano alimentar?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Depois da avaliação, você recebe o plano de forma digital e organizada, com orientações práticas pra colocar em ação já no dia seguinte.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Preciso comprar suplemento ou comida específica?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Não. O foco é comida de verdade e acessível. Nada de suplemento milagroso ou ingrediente caro — você compra só o que precisa.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="container">
+    <p class="cta-eyebrow" data-reveal>Pronto para começar?</p>
+    <h2 class="cta-title" data-reveal>Bora fazer o simples<br><em>que funciona?</em></h2>
+    <p class="cta-sub" data-reveal>Comida de verdade · sem firula · sem passar fome</p>
+    <div data-reveal>
+      <a href="#" class="js-wa btn-gold">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        Agendar consulta via WhatsApp
+      </a>
+      <p class="cta-micro">Resposta rápida em horário comercial</p>
+    </div>
+  </div>
+</section>
+
+<section class="social">
+  <p class="social-label" data-reveal>Siga e conecte-se</p>
+  <div class="social-links" data-reveal>
+    <a href="https://instagram.com/nutri.rosanamorais" target="_blank" rel="noopener" class="social-link">
+      <span class="social-ico"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+      @nutri.rosanamorais
+    </a>
+    <a href="#" class="js-wa social-link">
+      <span class="social-ico"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg></span>
+      WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Rosana <span>Morais</span></div>
+  <div class="footer-divider"></div>
+  <div class="footer-info">
+    <p>Nutricionista · CRN: informe seu registro</p>
+    <p>Comida de verdade, sem firula</p>
+  </div>
+  <span class="footer-copy">&copy; <span id="ano"></span> Rosana Morais · Todos os direitos reservados</span>
+  <span class="footer-copy">Este conteúdo é informativo e não substitui avaliação individual.</span>
+  <span class="footer-copy">Desenvolvido por <a href="https://kadosh-tech.vercel.app/" target="_blank" rel="noopener" style="color:var(--gold-lt);">Kadosh Tech</a></span>
+</footer>
+
+<script>
+  var WHATSAPP_NUMERO = '5511960804416';
+  var WHATSAPP_MSG = 'Ola, Rosana! Vim pela sua pagina e quero agendar uma consulta.';
+  var waLink = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(WHATSAPP_MSG);
+  document.querySelectorAll('.js-wa').forEach(function(a){ a.href = waLink; a.target = '_blank'; a.rel = 'noopener'; });
+
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 40); };
+  onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+
+  var menu = document.getElementById('mobileMenu');
+  document.getElementById('burger').addEventListener('click', function(){ menu.classList.toggle('open'); });
+  document.getElementById('mmClose').addEventListener('click', function(){ menu.classList.remove('open'); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); }); });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){ if (e.isIntersecting){ setTimeout(function(){ e.target.classList.add('visible'); }, i*80); io.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.hero-content [data-reveal]').forEach(function(el,i){ el.style.transitionDelay = (i*.1)+'s'; setTimeout(function(){ el.classList.add('visible'); }, i*110+120); });
+
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      var a = q.nextElementSibling, icon = q.querySelector('.faq-icon');
+      var open = a.style.maxHeight && a.style.maxHeight !== '0px';
+      document.querySelectorAll('.faq-a').forEach(function(x){ x.style.maxHeight = '0px'; });
+      document.querySelectorAll('.faq-icon').forEach(function(x){ x.textContent = '+'; });
+      document.querySelectorAll('.faq-q').forEach(function(x){ x.setAttribute('aria-expanded','false'); });
+      if (!open){ a.style.maxHeight = a.scrollHeight + 'px'; icon.textContent = '–'; q.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  var track = document.getElementById('testiTrack');
+  var dots = document.querySelectorAll('.testi-dot');
+  var cards = document.querySelectorAll('.testi-card');
+  var current = 0, autoTimer;
+  function goTo(idx){
+    current = (idx + cards.length) % cards.length;
+    track.style.transform = 'translateX(calc(-' + (current*100) + '% - ' + (current*16) + 'px))';
+    dots.forEach(function(d){ d.classList.remove('active'); }); dots[current].classList.add('active');
+  }
+  function startAuto(){ autoTimer = setInterval(function(){ goTo(current+1); }, 5200); }
+  function stopAuto(){ clearInterval(autoTimer); }
+  document.getElementById('testiNext').addEventListener('click', function(){ stopAuto(); goTo(current+1); startAuto(); });
+  document.getElementById('testiPrev').addEventListener('click', function(){ stopAuto(); goTo(current-1); startAuto(); });
+  dots.forEach(function(d){ d.addEventListener('click', function(){ stopAuto(); goTo(+d.dataset.idx); startAuto(); }); });
+  var sx = 0;
+  track.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; stopAuto(); }, { passive:true });
+  track.addEventListener('touchend', function(e){ var diff = sx - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) goTo(diff > 0 ? current+1 : current-1); startAuto(); });
+  startAuto();
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
