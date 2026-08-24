@@ -260,8 +260,8 @@ section[id]{ scroll-margin-top:76px; }
 
 /* ═══ ONDE ATENDO ═══ */
 .locais{ background:var(--paper); }
-.locais-grid{ margin-top:40px; display:grid; gap:18px; }
-.local-card{ background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:26px 24px; box-shadow:var(--sh-sm); text-align:left; transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease); }
+.locais-grid{ margin-top:40px; display:grid; gap:18px; justify-items:center; }
+.local-card{ width:100%; max-width:360px; background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:26px 24px; box-shadow:var(--sh-sm); text-align:left; transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease); }
 .local-card:hover{ transform:translateY(-3px); box-shadow:var(--sh-md); border-color:var(--gold-lt); }
 .local-tag{ font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; }
 .local-name{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; color:var(--espresso); margin-top:6px; line-height:1.25; }
@@ -318,7 +318,6 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
   .pains-grid{ grid-template-columns:1fr 1fr; }
   .steps-grid{ grid-template-columns:1fr 1fr; }
   .method-list{ grid-template-columns:1fr 1fr; gap:36px 40px; }
-  .locais-grid{ grid-template-columns:1fr 1fr; }
 }
 </style>
 </head>
@@ -417,16 +416,16 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
 <section class="section method" id="metodo">
   <div class="container center">
     <p class="section-label" data-reveal>O método</p>
-    <h2 class="section-title" data-reveal>Nutrição Sem Firula</h2>
+    <h2 class="section-title" data-reveal>Comida de verdade</h2>
     <span class="rule" data-reveal></span>
-    <p class="section-intro" data-reveal>O básico que funciona, com as quantidades certas. Nada de invencionice, nada de milagre — só comida de verdade adaptada à sua rotina.</p>
+    <p class="section-intro" data-reveal>O básico que realmente funciona. Você vai aprender que a qualidade é mais importante que a quantidade. Nada de radicalismo — é nutrição de verdade adaptada à sua rotina.</p>
   </div>
   <div class="container">
     <div class="method-list">
-      <div class="method-item" data-reveal><span class="method-num">01</span><div><h3>Plano realista</h3><p>Feito em cima do que você já come. Sem cardápio impossível de seguir.</p></div></div>
-      <div class="method-item" data-reveal><span class="method-num">02</span><div><h3>Comida de verdade</h3><p>Carnes, ovos e alimentos acessíveis, com a ingestão certa de proteína e nutrientes.</p></div></div>
+      <div class="method-item" data-reveal><span class="method-num">01</span><div><h3>Plano realista</h3><p>Plano alimentar baseado em alimentos que você encontra com facilidade em qualquer supermercado, feira e açougue.</p></div></div>
+      <div class="method-item" data-reveal><span class="method-num">02</span><div><h3>Comida de verdade</h3><p>Gorduras, proteínas e carboidratos adaptados à sua necessidade e objetivo. Você vai entender toda a história da alimentação já na primeira consulta.</p></div></div>
       <div class="method-item" data-reveal><span class="method-num">03</span><div><h3>Economia no mercado</h3><p>Você compra só o que precisa. Muita gente acaba gastando menos, não mais.</p></div></div>
-      <div class="method-item" data-reveal><span class="method-num">04</span><div><h3>Sem passar fome</h3><p>Sem cortar tudo de uma vez e sem abrir mão da vida social. Mudança que dura.</p></div></div>
+      <div class="method-item" data-reveal><span class="method-num">04</span><div><h3>Sem passar fome</h3><p>Passar fome nunca foi a melhor solução. Você mantém o que gosta, sem abrir mão da vida social, e aprende a moldar seu novo estilo de vida.</p></div></div>
     </div>
   </div>
 </section>
@@ -492,8 +491,9 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
     </div>
 
     <div class="about-body" data-reveal>
-      <p>Rosana Morais é nutricionista e trabalha com um jeito direto e acolhedor de cuidar da alimentação: sem dieta mirabolante, sem produto caro, sem prometer milagre.</p>
-      <p>A proposta é te dar clareza sobre o que realmente importa e um plano que cabe na sua vida — com atenção individual e acompanhamento de verdade até você conquistar o resultado.</p>
+      <p>Rosana Morais é uma nutricionista que trabalha fazendo com que as pessoas primeiro entendam o porquê chegaram até aqui, e segundo o que terão que fazer para chegar onde precisam.</p>
+      <p>Mostro a nutrição de um jeito diferente e de forma direta, fazendo você enxergar de uma forma mais clara e objetiva. Plano alimentar fácil de aderir, evitando custos altos com a alimentação.</p>
+      <p>A proposta é que você tenha clareza sobre o que realmente importa, com atenção individual e acompanhamento de verdade até você conquistar o resultado que tanto deseja.</p>
     </div>
     <a href="https://instagram.com/nutri.rosanamorais" target="_blank" rel="noopener" class="about-ig" data-reveal>@nutri.rosanamorais</a>
   </div>
@@ -525,35 +525,8 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
     <div class="locais-grid">
       <div class="local-card" data-reveal>
         <p class="local-tag">São Judas</p>
-        <!-- PREENCHER: nome da clínica -->
-        <h3 class="local-name">Clínica <!-- PREENCHER NOME --></h3>
-        <!-- PREENCHER: endereço completo -->
-        <p class="local-addr"><!-- PREENCHER ENDEREÇO -->, São Judas – São Paulo/SP</p>
         <div class="local-actions">
-          <!-- PREENCHER: link do Google Maps com o endereço codificado -->
-          <a href="https://www.google.com/maps/place/S%C3%A3o+Judas/@-23.6255455,-46.6434056,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce5a57ed311241:0xe38b7199df56bf80!8m2!3d-23.6255455!4d-46.6408307!16s%2Fm%2F0g54nng?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="local-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Ver no mapa
-          </a>
           <a href="#" class="js-wa local-btn local-btn-wa" data-wa-msg="Olá, Rosana! Vim pelo site e gostaria de agendar uma consulta na região da São Judas.">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
-            Agendar nesta unidade
-          </a>
-        </div>
-      </div>
-      <div class="local-card" data-reveal>
-        <p class="local-tag">Jabaquara</p>
-        <!-- PREENCHER: nome da academia -->
-        <h3 class="local-name">Academia <!-- PREENCHER NOME --></h3>
-        <!-- PREENCHER: endereço completo -->
-        <p class="local-addr"><!-- PREENCHER ENDEREÇO -->, Jabaquara – São Paulo/SP</p>
-        <div class="local-actions">
-          <!-- PREENCHER: link do Google Maps com o endereço codificado -->
-          <a href="https://www.google.com/maps/place/Jabaquara-Comit%C3%AA+Paral%C3%ADmpico+Brasileiro/@-23.6461957,-46.6433574,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce5add5cb1ea19:0xaf1809e44c2de978!8m2!3d-23.6461957!4d-46.6407825!16s%2Fm%2F0g9wpc0?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="local-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Ver no mapa
-          </a>
-          <a href="#" class="js-wa local-btn local-btn-wa" data-wa-msg="Olá, Rosana! Vim pelo site e gostaria de agendar uma consulta na região do Jabaquara.">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
             Agendar nesta unidade
           </a>
@@ -573,7 +546,7 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
     <div class="faq-list" data-reveal>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">O atendimento é presencial ou online?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Os dois. Você pode ser atendida presencialmente ou 100% online por vídeo — do jeito que for melhor pra você.</p></div>
+        <div class="faq-a"><p>O foco é o atendimento online. Também atendo presencialmente na região de São Judas — qualquer dúvida, entre em contato.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Como recebo o plano alimentar?<span class="faq-icon">+</span></button>
