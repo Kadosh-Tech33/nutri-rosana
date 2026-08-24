@@ -3,11 +3,34 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rosana Morais · Nutricionista — Comida de verdade, sem firula</title>
-<meta name="description" content="Acompanhamento nutricional prático com comida de verdade. Emagreça e recupere sua saúde sem dieta restritiva nem mercado caro." />
+<title>Rosana Morais · Nutricionista em São Judas e Jabaquara – Zona Sul, SP</title>
+<meta name="description" content="Nutricionista em São Judas e Jabaquara, Zona Sul de São Paulo. Acompanhamento nutricional prático com comida de verdade — presencial ou online." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Nutritionist",
+  "name": "Rosana Morais",
+  "url": "<!-- PREENCHER URL DO SITE -->",
+  "image": "<!-- PREENCHER URL DA FOTO (ex.: URL do site + /img/foto (1).png) -->",
+  "sameAs": [
+    "https://instagram.com/nutri.rosanamorais"
+  ],
+  "telephone": "+5511960804416",
+  "areaServed": ["São Judas", "Jabaquara", "Saúde", "Conceição", "Zona Sul de São Paulo"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "<!-- PREENCHER ENDEREÇO -->",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "postalCode": "<!-- PREENCHER CEP -->",
+    "addressCountry": "BR"
+  }
+}
+</script>
 
 <style>
 /* ─── TOKENS ─────────────────────────────────────── */
@@ -152,6 +175,7 @@ section[id]{ scroll-margin-top:76px; }
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
 }
 .hero-sub{ font-size:14.5px; color:rgba(255,255,255,.62); max-width:400px; margin:22px auto 0; line-height:1.7; }
+.hero-locales{ font-size:12px; color:var(--gold-lt); opacity:.75; max-width:400px; margin:10px auto 0; letter-spacing:.02em; }
 .hero-btn{ margin-top:34px; }
 
 .btn-gold{
@@ -199,6 +223,8 @@ section[id]{ scroll-margin-top:76px; }
 
 /* ═══ DEPOIMENTOS ═══ */
 .testimonials{ background:var(--cream); text-align:center; }
+.testi-badge{ display:inline-flex; align-items:center; gap:6px; font-size:11.5px; letter-spacing:.04em; color:var(--gold-deep); background:var(--white); border:1px solid var(--border); border-radius:var(--r-pill); padding:6px 14px; margin-top:10px; }
+.testi-badge b{ color:var(--gold); letter-spacing:1px; font-weight:500; }
 .testi-wrap{ position:relative; margin-top:38px; overflow:hidden; }
 .testi-track{ display:flex; gap:16px; transition:transform .45s cubic-bezier(.4,0,.2,1); will-change:transform; }
 .testi-card{ flex:0 0 100%; max-width:100%; background:var(--white); border-radius:var(--r); border-left:3px solid var(--gold); padding:28px 24px 24px; text-align:left; box-shadow:var(--sh-sm); }
@@ -231,6 +257,21 @@ section[id]{ scroll-margin-top:76px; }
 .step-n{ flex-shrink:0; width:42px; height:42px; border-radius:50%; border:1.5px solid var(--gold-lt); display:grid; place-items:center; font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--gold-deep); }
 .step-card h3{ font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; color:var(--espresso); line-height:1.2; }
 .step-card p{ font-size:13px; color:var(--text-sub); margin-top:3px; line-height:1.55; }
+
+/* ═══ ONDE ATENDO ═══ */
+.locais{ background:var(--paper); }
+.locais-grid{ margin-top:40px; display:grid; gap:18px; }
+.local-card{ background:var(--white); border:1px solid var(--border); border-radius:var(--r); padding:26px 24px; box-shadow:var(--sh-sm); text-align:left; transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease); }
+.local-card:hover{ transform:translateY(-3px); box-shadow:var(--sh-md); border-color:var(--gold-lt); }
+.local-tag{ font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; }
+.local-name{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; color:var(--espresso); margin-top:6px; line-height:1.25; }
+.local-addr{ font-size:13.5px; color:var(--text-sub); margin-top:8px; line-height:1.6; }
+.local-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.local-btn{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:500; padding:10px 16px; border-radius:var(--r-pill); border:1px solid var(--border); color:var(--text-sub); transition:border-color var(--ease), color var(--ease), transform var(--ease); }
+.local-btn:hover{ border-color:var(--gold); color:var(--espresso); transform:translateY(-2px); }
+.local-btn svg{ width:14px; height:14px; }
+.local-btn.local-btn-wa{ background:linear-gradient(140deg,var(--gold),var(--gold-lt)); color:var(--espresso); border:none; }
+.local-btn.local-btn-wa:hover{ box-shadow:0 8px 22px rgba(194,154,70,.32); }
 
 /* ═══ FAQ ═══ */
 .faq{ background:var(--paper); }
@@ -277,6 +318,7 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
   .pains-grid{ grid-template-columns:1fr 1fr; }
   .steps-grid{ grid-template-columns:1fr 1fr; }
   .method-list{ grid-template-columns:1fr 1fr; gap:36px 40px; }
+  .locais-grid{ grid-template-columns:1fr 1fr; }
 }
 </style>
 </head>
@@ -329,6 +371,7 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
     <span class="hero-rule" data-reveal></span>
     <p class="hero-headline" data-reveal>Emagreça com comida de verdade — sem dieta maluca nem mercado caro.</p>
     <p class="hero-sub" data-reveal>Acompanhamento nutricional prático e individualizado, adaptado ao que você já come. Do jeito realista que se sustenta.</p>
+    <p class="hero-locales" data-reveal>Atendimento em São Judas e Jabaquara · Zona Sul de SP · e online.</p>
 
     <div class="hero-btn" data-reveal>
       <a href="#" class="js-wa btn-gold">
@@ -393,18 +436,25 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
     <p class="section-label" data-reveal>Quem já vive isso</p>
     <h2 class="section-title" data-reveal>Palavras de quem seguiu</h2>
     <span class="rule" data-reveal></span>
+    <span class="testi-badge" data-reveal><b>★★★★★</b> · Avaliações do Google</span>
 
     <div class="testi-wrap" data-reveal>
       <div class="testi-track" id="testiTrack">
         <article class="testi-card">
           <div class="testi-mark">&ldquo;</div>
-          <p class="testi-text">Achei o plano da Rô muito bom! É muito realista e de acordo com o que já como. Não tem firula, é o básico que funciona com as quantidades certas. Não vou gastar mais no mercado, até posso gastar menos, porque é comprar o que precisa. Gostei muito mesmo!</p>
+          <p class="testi-text">Rô!! Nutricionista maravilhosa. Agradeço por toda a sua atenção e por me mostrar que uma alimentação saudável pode ser prazerosa e acessível. Suas dicas têm feito toda a diferença na minha vida. Gratidão! Recomendo muito.</p>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-author">Paciente · acompanhamento online</p>
+          <p class="testi-author">Daniela Santiago · avaliação no Google · há 1 ano</p>
         </article>
         <article class="testi-card">
           <div class="testi-mark">&ldquo;</div>
-          <p class="testi-text">Foi muito tranquilo, não passei fome nem nada! Tirei o refrigerante — hoje tentei tomar um copo de Coca, mas ficou muito doce, tomei só um pouquinho. Sexta e sábado já estou sem lanche e sem refri. No máximo zero açúcar.</p>
+          <p class="testi-text">Só tenho coisas boas para falar, a Rosana é uma excelente profissional. A consulta tem um tempo apropriado para que ela possa ouvir e entender as nossas necessidades. […] Ela nos compreende sem nos julgar e nos orienta de forma assertiva. […] Já tive o meu primeiro retorno e fiquei muito satisfeita com os resultados obtidos com a ajuda dela.</p>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-author">Josi Souza · avaliação no Google · há 4 meses</p>
+        </article>
+        <article class="testi-card">
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-text">Achei o plano da Rô muito bom! É muito realista e de acordo com o que já como. Não tem firula, é o básico que funciona com as quantidades certas. Não vou gastar mais no mercado, até posso gastar menos, porque é comprar o que precisa. Gostei muito mesmo!</p>
           <div class="testi-stars">★★★★★</div>
           <p class="testi-author">Paciente · acompanhamento online</p>
         </article>
@@ -421,6 +471,7 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
       <button class="testi-dot active" data-idx="0" aria-label="Depoimento 1"></button>
       <button class="testi-dot" data-idx="1" aria-label="Depoimento 2"></button>
       <button class="testi-dot" data-idx="2" aria-label="Depoimento 3"></button>
+      <button class="testi-dot" data-idx="3" aria-label="Depoimento 4"></button>
     </div>
     <div class="testi-nav">
       <button class="testi-btn" id="testiPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -460,6 +511,54 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
       <div class="step-card" data-reveal><span class="step-n">2</span><div><h3>Avaliação completa</h3><p>Analisamos sua rotina, preferências e objetivos.</p></div></div>
       <div class="step-card" data-reveal><span class="step-n">3</span><div><h3>Plano individualizado</h3><p>Prático e feito pra sua realidade.</p></div></div>
       <div class="step-card" data-reveal><span class="step-n">4</span><div><h3>Acompanhamento</h3><p>Suporte pra dúvidas e ajustes no caminho.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section locais" id="locais">
+  <div class="container center">
+    <p class="section-label" data-reveal>Zona Sul · São Paulo</p>
+    <h2 class="section-title" data-reveal>Onde atendo</h2>
+    <span class="rule" data-reveal></span>
+  </div>
+  <div class="container">
+    <div class="locais-grid">
+      <div class="local-card" data-reveal>
+        <p class="local-tag">São Judas</p>
+        <!-- PREENCHER: nome da clínica -->
+        <h3 class="local-name">Clínica <!-- PREENCHER NOME --></h3>
+        <!-- PREENCHER: endereço completo -->
+        <p class="local-addr"><!-- PREENCHER ENDEREÇO -->, São Judas – São Paulo/SP</p>
+        <div class="local-actions">
+          <!-- PREENCHER: link do Google Maps com o endereço codificado -->
+          <a href="https://www.google.com/maps/place/S%C3%A3o+Judas/@-23.6255455,-46.6434056,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce5a57ed311241:0xe38b7199df56bf80!8m2!3d-23.6255455!4d-46.6408307!16s%2Fm%2F0g54nng?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="local-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ver no mapa
+          </a>
+          <a href="#" class="js-wa local-btn local-btn-wa" data-wa-msg="Olá, Rosana! Vim pelo site e gostaria de agendar uma consulta na região da São Judas.">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            Agendar nesta unidade
+          </a>
+        </div>
+      </div>
+      <div class="local-card" data-reveal>
+        <p class="local-tag">Jabaquara</p>
+        <!-- PREENCHER: nome da academia -->
+        <h3 class="local-name">Academia <!-- PREENCHER NOME --></h3>
+        <!-- PREENCHER: endereço completo -->
+        <p class="local-addr"><!-- PREENCHER ENDEREÇO -->, Jabaquara – São Paulo/SP</p>
+        <div class="local-actions">
+          <!-- PREENCHER: link do Google Maps com o endereço codificado -->
+          <a href="https://www.google.com/maps/place/Jabaquara-Comit%C3%AA+Paral%C3%ADmpico+Brasileiro/@-23.6461957,-46.6433574,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce5add5cb1ea19:0xaf1809e44c2de978!8m2!3d-23.6461957!4d-46.6407825!16s%2Fm%2F0g9wpc0?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="local-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ver no mapa
+          </a>
+          <a href="#" class="js-wa local-btn local-btn-wa" data-wa-msg="Olá, Rosana! Vim pelo site e gostaria de agendar uma consulta na região do Jabaquara.">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            Agendar nesta unidade
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -523,6 +622,7 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
   <div class="footer-info">
     <p>Nutricionista · CRN: informe seu registro</p>
     <p>Comida de verdade, sem firula</p>
+    <p>Atendimento em São Judas e Jabaquara · Zona Sul de São Paulo · e online</p>
   </div>
   <span class="footer-copy">&copy; <span id="ano"></span> Rosana Morais · Todos os direitos reservados</span>
   <span class="footer-copy">Este conteúdo é informativo e não substitui avaliação individual.</span>
@@ -532,8 +632,11 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
 <script>
   var WHATSAPP_NUMERO = '5511960804416';
   var WHATSAPP_MSG = 'Ola, Rosana! Vim pela sua pagina e quero agendar uma consulta.';
-  var waLink = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(WHATSAPP_MSG);
-  document.querySelectorAll('.js-wa').forEach(function(a){ a.href = waLink; a.target = '_blank'; a.rel = 'noopener'; });
+  document.querySelectorAll('.js-wa').forEach(function(a){
+    var msg = a.dataset.waMsg || WHATSAPP_MSG;
+    a.href = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
+    a.target = '_blank'; a.rel = 'noopener';
+  });
 
   var nav = document.getElementById('nav');
   var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 40); };
@@ -564,21 +667,18 @@ footer{ background:var(--espresso-d); text-align:center; padding:44px 26px; }
   var track = document.getElementById('testiTrack');
   var dots = document.querySelectorAll('.testi-dot');
   var cards = document.querySelectorAll('.testi-card');
-  var current = 0, autoTimer;
+  var current = 0;
   function goTo(idx){
     current = (idx + cards.length) % cards.length;
     track.style.transform = 'translateX(calc(-' + (current*100) + '% - ' + (current*16) + 'px))';
     dots.forEach(function(d){ d.classList.remove('active'); }); dots[current].classList.add('active');
   }
-  function startAuto(){ autoTimer = setInterval(function(){ goTo(current+1); }, 5200); }
-  function stopAuto(){ clearInterval(autoTimer); }
-  document.getElementById('testiNext').addEventListener('click', function(){ stopAuto(); goTo(current+1); startAuto(); });
-  document.getElementById('testiPrev').addEventListener('click', function(){ stopAuto(); goTo(current-1); startAuto(); });
-  dots.forEach(function(d){ d.addEventListener('click', function(){ stopAuto(); goTo(+d.dataset.idx); startAuto(); }); });
+  document.getElementById('testiNext').addEventListener('click', function(){ goTo(current+1); });
+  document.getElementById('testiPrev').addEventListener('click', function(){ goTo(current-1); });
+  dots.forEach(function(d){ d.addEventListener('click', function(){ goTo(+d.dataset.idx); }); });
   var sx = 0;
-  track.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; stopAuto(); }, { passive:true });
-  track.addEventListener('touchend', function(e){ var diff = sx - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) goTo(diff > 0 ? current+1 : current-1); startAuto(); });
-  startAuto();
+  track.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, { passive:true });
+  track.addEventListener('touchend', function(e){ var diff = sx - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) goTo(diff > 0 ? current+1 : current-1); });
 
   document.getElementById('ano').textContent = new Date().getFullYear();
 </script>
